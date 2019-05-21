@@ -15,6 +15,7 @@ public class ModifySong extends AppCompatActivity {
     EditText etID, etSongTitle, etYear, etSingers;
     Button btnUpdate, btnDelete, btnCancel;
     RadioGroup rg;
+    RadioButton rb1, rb2, rb3, rb4, rb5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +32,31 @@ public class ModifySong extends AppCompatActivity {
         btnDelete = findViewById(R.id.btnDelete);
         btnUpdate = findViewById(R.id.btnUpdate);
         rg = findViewById(R.id.radioGroupStars);
+        rb1 = findViewById(R.id.radio1);
+        rb2 = findViewById(R.id.radio2);
+        rb3 = findViewById(R.id.radio3);
+        rb4 = findViewById(R.id.radio4);
+        rb5 = findViewById(R.id.radio5);
 
-        Intent intentReceived =  getIntent();
+        Intent intentReceived = getIntent();
         Song song = (Song) intentReceived.getSerializableExtra("song");
 
         etID.setEnabled(false);
         etID.setText(song.getId() + "");
         etSingers.setText(song.getSingers());
         etSongTitle.setText(song.getTitle());
-        etYear.setText(song.getYear()+"");
-        rg.check(song.getStars());
+        etYear.setText(song.getYear() + "");
+        if (song.getStars() == 1) {
+            rb1.setChecked(true);
+        } else if (song.getStars() == 2) {
+            rb2.setChecked(true);
+        } else if (song.getStars() == 3) {
+            rb3.setChecked(true);
+        } else if (song.getStars() == 4) {
+            rb4.setChecked(true);
+        } else if (song.getStars() == 5) {
+            rb5.setChecked(true);
+        }
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +70,13 @@ public class ModifySong extends AppCompatActivity {
                 if (songTitle.length() == 0 || year.length() == 0 || singers.length() == 0) {
                     Toast.makeText(getBaseContext(), "All fields cannot be empty", Toast.LENGTH_SHORT).show();
                 } else {
-
+                    int intYear = Integer.parseInt(year);
+                    DBHelper db = new DBHelper(ModifySong.this);
+                    db.updateSong(new Song(0, songTitle, singers, intYear, stars));
+                    Toast.makeText(getBaseContext(), "Updated", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent();
+                    setResult(RESULT_OK,i);
+                    finish();
                 }
             }
         });

@@ -55,9 +55,22 @@ public class ShowActivity extends AppCompatActivity {
                 Intent intent = new Intent(getBaseContext(), ModifySong.class);
                 Song currentSong = al.get(position);
                 intent.putExtra("song", currentSong);
-                startActivity(intent);
+                startActivityForResult(intent, 9);
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == 9){
+            DBHelper db = new DBHelper(ShowActivity.this);
+            al.clear();
+            al.addAll(db.getAllSongs());
+            aa = new SongAdapter(this, R.layout.row, al);
+            lv.setAdapter(aa);
+        }
     }
 }
