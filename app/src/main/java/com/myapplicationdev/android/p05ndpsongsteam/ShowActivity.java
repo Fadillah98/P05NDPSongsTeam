@@ -40,6 +40,8 @@ public class ShowActivity extends AppCompatActivity {
                 DBHelper dbh = new DBHelper(ShowActivity.this);
                 al.clear();
                 al.addAll(dbh.getFilteredSong(5));
+                aa = new SongAdapter(getBaseContext(), R.layout.row, al);
+                lv.setAdapter(aa);
                 dbh.close();
             }
         });
