@@ -1,8 +1,10 @@
 package com.myapplicationdev.android.p05ndpsongsteam;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -43,6 +45,16 @@ public class ShowActivity extends AppCompatActivity {
                 aa = new SongAdapter(getBaseContext(), R.layout.row, al);
                 lv.setAdapter(aa);
                 dbh.close();
+            }
+        });
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent = new Intent(getBaseContext(), ModifySong.class);
+                Song currentSong = al.get(position);
+                intent.putExtra("song", currentSong);
+                startActivity(intent);
             }
         });
 
