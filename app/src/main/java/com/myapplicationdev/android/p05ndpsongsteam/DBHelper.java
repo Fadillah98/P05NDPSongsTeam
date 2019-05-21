@@ -92,7 +92,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     // Update/Edit
-    public int updateNote(Song data){
+    public int updateSong(Song data){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_TITLE, data.getTitle());
@@ -107,7 +107,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     // Delete
-    public int deleteNote(int id){
+    public int deleteSong(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         String condition = COLUMN_ID + "= ?";
         String[] args = {String.valueOf(id)};
