@@ -23,6 +23,12 @@ public class ModifySong extends AppCompatActivity {
         btnDelete = findViewById(R.id.btnDelete);
         btnUpdate = findViewById(R.id.btnUpdate);
 
+        etID.setEnabled(false);
+        etID.setText("");
+        etSingers.setText("");
+        etSongTitle.setText("");
+        etYear.setText("");
+
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
