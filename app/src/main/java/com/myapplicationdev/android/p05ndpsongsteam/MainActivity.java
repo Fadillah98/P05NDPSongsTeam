@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Button btnInsert, btnShow;
-    EditText etTitle,etSingers,etYear;
+    EditText etTitle, etSingers, etYear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 // activity's Context
                 DBHelper db = new DBHelper(MainActivity.this);
 
-                if (etTitle.getText().toString().isEmpty()||etSingers.getText().toString().isEmpty()||etYear.getText().toString().isEmpty() ) {
+                if (etTitle.getText().toString().isEmpty() || etSingers.getText().toString().isEmpty() || etYear.getText().toString().isEmpty()) {
                     // Insert a task
                     Toast.makeText(MainActivity.this, "Please Enter A Note Title",
                             Toast.LENGTH_LONG).show();
@@ -55,18 +55,17 @@ public class MainActivity extends AppCompatActivity {
                     rg.clearCheck();
                     rb1.setChecked(true);
                 }
+            }
+        });
 
 
-
-
-        }
-    });
-    btnShow.setOnClickListener(new View.OnClickListener() {
+        btnShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), ShowActivity.class);
                 startActivity(i);
             }
         });
-}}
+    }
+}
 
