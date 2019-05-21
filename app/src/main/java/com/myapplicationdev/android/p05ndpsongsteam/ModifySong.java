@@ -32,14 +32,14 @@ public class ModifySong extends AppCompatActivity {
         btnUpdate = findViewById(R.id.btnUpdate);
         rg = findViewById(R.id.radioGroupStars);
 
-        Intent intentReceived = new Intent();
+        Intent intentReceived =  getIntent();
         Song song = (Song) intentReceived.getSerializableExtra("song");
 
         etID.setEnabled(false);
-        etID.setText(song.getId());
+        etID.setText(song.getId() + "");
         etSingers.setText(song.getSingers());
         etSongTitle.setText(song.getTitle());
-        etYear.setText(song.getYear());
+        etYear.setText(song.getYear()+"");
         rg.check(song.getStars());
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {

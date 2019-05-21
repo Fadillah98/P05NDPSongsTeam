@@ -18,17 +18,30 @@ public class Song implements Serializable {
         this.stars = stars;
     }
 
+
     public int getId() {
         return id;
+    }
+
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
         return title;
     }
 
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+
     public String getSingers() {
         return singers;
     }
+
 
     public int getYear() {
         return year;
@@ -37,4 +50,17 @@ public class Song implements Serializable {
     public int getStars() {
         return stars;
     }
+
+
+    public void setSingers(String singers) {
+        this.singers = singers;
+    }
+    
+    public void setStars(Integer stars) {
+        this.stars = stars;
+    }
+
+
 }
+
+
