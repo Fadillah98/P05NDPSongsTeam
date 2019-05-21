@@ -1,5 +1,6 @@
 package com.myapplicationdev.android.p05ndpsongsteam;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,12 +29,15 @@ public class ModifySong extends AppCompatActivity {
         btnUpdate = findViewById(R.id.btnUpdate);
         rg = findViewById(R.id.radioGroupStars);
 
+        Intent intentReceived = new Intent();
+        Song song = (Song) intentReceived.getSerializableExtra("song");
+
         etID.setEnabled(false);
-        etID.setText("");
-        etSingers.setText("");
-        etSongTitle.setText("");
-        etYear.setText("");
-        rg.check(0);
+        etID.setText(song.getId());
+        etSingers.setText(song.getSingers());
+        etSongTitle.setText(song.getTitle());
+        etYear.setText(song.getYear());
+        rg.check(song.getStars());
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +51,7 @@ public class ModifySong extends AppCompatActivity {
                 if (songTitle.length() == 0 || year.length() == 0 || singers.length() == 0) {
                     Toast.makeText(getBaseContext(), "All fields cannot be empty", Toast.LENGTH_SHORT).show();
                 } else {
-                    
+
                 }
             }
         });
