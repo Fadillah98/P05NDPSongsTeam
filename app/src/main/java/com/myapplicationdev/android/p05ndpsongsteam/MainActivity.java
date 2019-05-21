@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 RadioGroup rg = findViewById(R.id.radioGroupStars);
+                RadioButton rb1 = findViewById(R.id.radio1);
                 int selectedButtonId = rg.getCheckedRadioButtonId();
                 RadioButton rb = findViewById(selectedButtonId);
 
@@ -48,21 +49,20 @@ public class MainActivity extends AppCompatActivity {
                     db.close();
                     Toast.makeText(MainActivity.this, "Inserted",
                             Toast.LENGTH_LONG).show();
+                    etTitle.setText("");
+                    etSingers.setText("");
+                    etYear.setText("");
+                    rg.clearCheck();
+                    rb1.setChecked(true);
                 }
-
 
                 btnShow.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-
-                     //   Intent i = new Intent(getBaseContext(), SecondActivity.class);
-                        // Insert a task
-                 //       startActivity(i);
-
+                        Intent intent = new Intent(getBaseContext(), ShowActivity.class);
+                        startActivity(intent);
                     }
                 });
-
 
             }
         });
