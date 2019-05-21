@@ -20,6 +20,9 @@ public class ModifySong extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_song);
+
+        setTitle("P05-NDPSongs ~ Modify Song");
+
         etID = findViewById(R.id.etID);
         etSongTitle = findViewById(R.id.etTitle);
         etYear = findViewById(R.id.etYear);
