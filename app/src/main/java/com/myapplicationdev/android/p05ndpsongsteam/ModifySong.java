@@ -84,7 +84,11 @@ public class ModifySong extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                DBHelper db = new DBHelper(ModifySong.this);
+                db.deleteSong(song.getId());
+                Intent i = new Intent();
+                setResult(RESULT_OK,i);
+                finish();
             }
         });
 
