@@ -58,12 +58,9 @@ public class ShowActivity extends AppCompatActivity {
                 startActivityForResult(intent, 9);
             }
         });
-
     }
-
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,
-                                    Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode,Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == 9){
             DBHelper db = new DBHelper(ShowActivity.this);

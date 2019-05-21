@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (etTitle.getText().toString().isEmpty() || etSingers.getText().toString().isEmpty() || etYear.getText().toString().isEmpty()) {
                     // Insert a task
-                    Toast.makeText(MainActivity.this, "Please Enter A Note Title",
+                    Toast.makeText(MainActivity.this, "Please Fill In The Blanks",
                             Toast.LENGTH_LONG).show();
 
                 } else {
