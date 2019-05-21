@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else {
 
-                    db.insertSong(etTitle.getText().toString(),etSingers.getText().toString(),Integer.parseInt(etYear.getText().toString()), Integer.parseInt(rb.getText().toString()));
+                    db.insertSongs(etTitle.getText().toString(),etSingers.getText().toString(),Integer.parseInt(etYear.getText().toString()), Integer.parseInt(rb.getText().toString()));
                     db.close();
                     Toast.makeText(MainActivity.this, "Inserted",
                             Toast.LENGTH_LONG).show();
