@@ -15,7 +15,7 @@ public class SongAdapter extends ArrayAdapter<Song> {
     Context context;
     ArrayList<Song> songs;
     int resource;
-    ImageView iv1, iv2, iv3, iv4, iv5;
+    ImageView iv1, iv2, iv3, iv4, iv5, ivMusic;
     TextView tvTitle, tvSinger, tvYear;
 
     public SongAdapter(Context context, int resource, ArrayList<Song> songs) {
@@ -33,6 +33,7 @@ public class SongAdapter extends ArrayAdapter<Song> {
         View rowView = inflater.inflate(resource, parent, false);
 
         //Match the UI components with Java variables
+        ivMusic = rowView.findViewById(R.id.ivMusic);
         iv1 = rowView.findViewById(R.id.iv1Star);
         iv2 = rowView.findViewById(R.id.iv2Star);
         iv3 = rowView.findViewById(R.id.iv3Star);
@@ -42,6 +43,7 @@ public class SongAdapter extends ArrayAdapter<Song> {
         tvSinger = rowView.findViewById(R.id.tvSingers);
         tvYear = rowView.findViewById(R.id.tvYear);
 
+        ivMusic.setImageResource(R.drawable.ic_library_music);
         Song song = songs.get(position);
 
         tvYear.setText(song.getYear() + "");

@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setTitle("P005-NDPSongs ~ Insert Song");
+
         btnInsert = findViewById(R.id.buttonInsertNote);
         etTitle = findViewById(R.id.etTitle);
         etSingers = findViewById(R.id.etSingers);
@@ -33,9 +35,6 @@ public class MainActivity extends AppCompatActivity {
                 int selectedButtonId = rg.getCheckedRadioButtonId();
                 RadioButton rb = findViewById(selectedButtonId);
 
-
-                // Create the DBHelper object, passing in the
-                // activity's Context
                 DBHelper db = new DBHelper(MainActivity.this);
 
                 if (etTitle.getText().toString().isEmpty()||etSingers.getText().toString().isEmpty()||etYear.getText().toString().isEmpty() ) {
@@ -55,17 +54,17 @@ public class MainActivity extends AppCompatActivity {
                     rg.clearCheck();
                     rb1.setChecked(true);
                 }
-
-                btnShow.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getBaseContext(), ShowActivity.class);
-                        startActivity(intent);
-                    }
-                });
-
             }
         });
+
+        btnShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), ShowActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
 
