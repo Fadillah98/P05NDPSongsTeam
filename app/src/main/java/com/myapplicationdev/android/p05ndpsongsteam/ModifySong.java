@@ -39,7 +39,7 @@ public class ModifySong extends AppCompatActivity {
         rb5 = findViewById(R.id.radio5);
 
         Intent intentReceived = getIntent();
-        Song song = (Song) intentReceived.getSerializableExtra("song");
+        final Song song = (Song) intentReceived.getSerializableExtra("song");
 
         etID.setEnabled(false);
         etID.setText(song.getId() + "");
@@ -72,7 +72,7 @@ public class ModifySong extends AppCompatActivity {
                 } else {
                     int intYear = Integer.parseInt(year);
                     DBHelper db = new DBHelper(ModifySong.this);
-                    db.updateSong(new Song(0, songTitle, singers, intYear, stars));
+                    db.updateSong(new Song(song.getId(), songTitle, singers, intYear, stars));
                     Toast.makeText(getBaseContext(), "Updated", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent();
                     setResult(RESULT_OK,i);
@@ -91,7 +91,7 @@ public class ModifySong extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                finish();
             }
         });
     }
